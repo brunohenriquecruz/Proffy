@@ -2,6 +2,8 @@ import React from 'react';
 import PageHeader from '../../components/PageHeader';
 import Input from '../../components/Inputs';
 
+import Textarea from '../../components/Textarea';
+import Select from '../../components/Select';
 import warningIcon from '../../assets/images/icons/warning.svg'
 
 import './styles.css'
@@ -18,18 +20,56 @@ function TeacherForm(){
             <main>
                 <fieldset>
                     <legend>Seus dados</legend>
-                    
+        
                     <Input name="name" label="Nome completo"/>
                     <Input name="avatar" label="Avatar"/>
                     <Input name="whatsapp" label="Whatsapp"/>
+                    <Textarea name="bio" label="Biografia"/>
+
                 </fieldset>
                 
                 <fieldset>
                     <legend>Sobre a aula</legend>
-
-                    <Input name="subject" label="Disciplina" />
+                    <Select 
+                        name="subject" 
+                        label="Disciplina" 
+                        options={[
+                            {value: 'Artes', label:'Artes'},
+                            {value: 'Biologia', label:'Biologia'},
+                            {value: 'Ciências', label:'Ciências'},
+                            {value: 'Educação Física', label:'Educação Física'},
+                            {value: 'Geografia', label:'Geografia'},
+                            {value: 'Matemática', label:'Matemática'}
+                        ]}
+                    />
+                    
                     <Input name="cost" label="Custo da sua hora por aula" />
+                </fieldset>
 
+                <fieldset>
+                    <legend> 
+                        Horários Disponíveis  
+                        <button type="button">
+                            + Novo Horário
+                        </button>
+                    </legend>
+                    
+                    <div className="schedule-item">
+                        <Select 
+                            name="subject" 
+                            label="Disciplina" 
+                            options={[
+                                {value: 'Artes', label:'Artes'},
+                                {value: 'Biologia', label:'Biologia'},
+                                {value: 'Ciências', label:'Ciências'},
+                                {value: 'Educação Física', label:'Educação Física'},
+                                {value: 'Geografia', label:'Geografia'},
+                                {value: 'Matemática', label:'Matemática'}
+                            ]}
+                        />
+                        <Input name="from" label="Das" type='time'/>
+                        <Input name="to" label="Até" type='time'/>
+                    </div> 
                 </fieldset>
 
                 <footer>
@@ -38,6 +78,7 @@ function TeacherForm(){
                         Importante! <br />
                         Preencha todos os dados
                     </p>
+
                     <button type="button">
                         Salvar cadastro
                     </button>
